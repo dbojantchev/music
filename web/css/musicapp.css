@@ -1,0 +1,32 @@
+
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+   // border-radius: 6px;
+}
+
+.container {
+    width: 100%;
+}
+
+.source-selector {
+    margin-top:20px;
+}
+
+.source-selector label {
+    margin-right:5px;
+}
+
+.source-selector select {
+    width:170px;
+    margin-top:2px;
+}
+
+.detailPane{
+    padding: 15px !important;
+    padding-left: 30px !important;
+    background: #C2F7FA;
+}
+
+#addSong label{
+    width:120px !important;
+}

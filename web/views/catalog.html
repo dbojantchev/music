@@ -1,0 +1,78 @@
+<div data-ng-controller="catalogController">
+
+    <div>
+        <h3 class="pull-left">Album Catalog</h3>
+        <div class="pull-right source-selector">
+                <label>Records Source</label>
+                <select class="pull-right" ng-model="albumBank" data-ng-change="selectDatabase()">
+                    <option value="1"> Album Bank 1 (Database) </option>
+                    <option value="2"> Album Bank 1 (JSON) </option>
+                </select>
+        </div>
+
+    </div>
+
+    <!-- Projects Row -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+
+                <!-- TABLE -->
+
+                <table id="catalogTable" width="100%" class="order-column table  table-striped table-hover" cellspacing="0">
+                    <tr>
+                        <th>Artist / Band</th>
+                        <th>Album Title</th>
+                        <th>Description</th>
+                        <th>Release Date</th>
+                        <th>Show Songs</th>
+                    </tr>
+                    <tr id="album{{album.id}}row" ng-repeat="album in albumData">
+                        <td>{{album.artist}}</td>
+                        <td>{{album.title}}</td>
+                        <td>{{album.description}}</td>
+                        <td>{{ album.release_dt }}</td>
+                        <td><input id="showSongs{{album.id}}" type="checkbox" style="margin-left:30px;" ng-click="toggleDetail(album)"></td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addSong" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color:#006d9d">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="glyphicon glyphicon-remove" aria-hidden="true" style="color:#fff"></span></button>
+                    <h4 class="modal-title custom_align" id="Heading" style="color:#fff">Add Song</h4>
+                </div>
+                <div class="modal-body">
+                    <form accept-charset="UTF-8" role="form">
+                        <div>
+                            <label class="radio-inline">Track #</label>
+                            <input type="text" ng-model="newSong.track_no" placeholder="Track #">
+                        </div>
+                        <div>
+                            <label class="radio-inline">Title</label>
+                            <input type="text" ng-model="newSong.title" placeholder="Title">
+                        </div>
+                        <div>
+                            <label class="radio-inline">Song Length</label>
+                            <input type="text" ng-model="newSong.length" placeholder="Length">
+                        </div>
+                        <div>
+                            <label class="radio-inline">Genre</label>
+                            <input type="text" ng-model="newSong.genre" placeholder="Genre" >
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer ">
+                    <button type="button" ng-click="saveSong()" class="btn btn-default"  ><span class="glyphicon glyphicon-ok" style="color:#7fb741"></span> Ok </button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+
